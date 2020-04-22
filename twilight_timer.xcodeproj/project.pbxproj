@@ -7,17 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E740849244A891A008846E5 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E740848244A891A008846E5 /* WeatherManager.swift */; };
+		6E74084F244BE384008846E5 /* SunsetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E74084E244BE384008846E5 /* SunsetModel.swift */; };
+		6E740853244BE42F008846E5 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E740852244BE42F008846E5 /* WeatherData.swift */; };
+		6E740855244CA6F7008846E5 /* WeatherManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E740854244CA6F7008846E5 /* WeatherManagerDelegate.swift */; };
 		6E859A60240206AE00B7A16E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E859A5F240206AE00B7A16E /* AppDelegate.swift */; };
 		6E859A62240206AE00B7A16E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E859A61240206AE00B7A16E /* SceneDelegate.swift */; };
 		6E859A64240206AE00B7A16E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E859A63240206AE00B7A16E /* ViewController.swift */; };
 		6E859A67240206AE00B7A16E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E859A65240206AE00B7A16E /* Main.storyboard */; };
-		6E859A6A240206AE00B7A16E /* twilight_timer_v0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E859A68240206AE00B7A16E /* twilight_timer_v0.xcdatamodeld */; };
+		6E859A6A240206AE00B7A16E /* twilight_timer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E859A68240206AE00B7A16E /* twilight_timer.xcdatamodeld */; };
 		6E859A6C240206B800B7A16E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E859A6B240206B800B7A16E /* Assets.xcassets */; };
 		6E859A6F240206B800B7A16E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E859A6D240206B800B7A16E /* LaunchScreen.storyboard */; };
+		6EC96F2C244FE69C00CC3B3B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC96F2B244FE69C00CC3B3B /* NotificationManager.swift */; };
+		6EC96F2E2450FD5800CC3B3B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EC96F2D2450FD5800CC3B3B /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6E859A5C240206AE00B7A16E /* twilight_timer_v0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twilight_timer_v0.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E740848244A891A008846E5 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		6E74084E244BE384008846E5 /* SunsetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetModel.swift; sourceTree = "<group>"; };
+		6E740852244BE42F008846E5 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		6E740854244CA6F7008846E5 /* WeatherManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManagerDelegate.swift; sourceTree = "<group>"; };
+		6E859A5C240206AE00B7A16E /* twilight_timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twilight_timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E859A5F240206AE00B7A16E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E859A61240206AE00B7A16E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6E859A63240206AE00B7A16E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +36,8 @@
 		6E859A6B240206B800B7A16E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E859A6E240206B800B7A16E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E859A70240206B800B7A16E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6EC96F2B244FE69C00CC3B3B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		6EC96F2D2450FD5800CC3B3B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,10 +51,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E7408372442981E008846E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6E74084E244BE384008846E5 /* SunsetModel.swift */,
+				6E740852244BE42F008846E5 /* WeatherData.swift */,
+				6E740854244CA6F7008846E5 /* WeatherManagerDelegate.swift */,
+				6E740848244A891A008846E5 /* WeatherManager.swift */,
+				6EC96F2B244FE69C00CC3B3B /* NotificationManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6E74083A24429842008846E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6E859A65240206AE00B7A16E /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6E74083B2442984B008846E5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6E859A63240206AE00B7A16E /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		6E859A53240206AE00B7A16E = {
 			isa = PBXGroup;
 			children = (
-				6E859A5E240206AE00B7A16E /* twilight_timer_v0 */,
+				6EC96F2D2450FD5800CC3B3B /* Default-568h@2x.png */,
+				6E859A5E240206AE00B7A16E /* twilight_timer */,
 				6E859A5D240206AE00B7A16E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,32 +91,33 @@
 		6E859A5D240206AE00B7A16E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6E859A5C240206AE00B7A16E /* twilight_timer_v0.app */,
+				6E859A5C240206AE00B7A16E /* twilight_timer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6E859A5E240206AE00B7A16E /* twilight_timer_v0 */ = {
+		6E859A5E240206AE00B7A16E /* twilight_timer */ = {
 			isa = PBXGroup;
 			children = (
 				6E859A5F240206AE00B7A16E /* AppDelegate.swift */,
 				6E859A61240206AE00B7A16E /* SceneDelegate.swift */,
-				6E859A63240206AE00B7A16E /* ViewController.swift */,
-				6E859A65240206AE00B7A16E /* Main.storyboard */,
+				6E7408372442981E008846E5 /* Model */,
+				6E74083B2442984B008846E5 /* Controller */,
+				6E74083A24429842008846E5 /* View */,
 				6E859A6B240206B800B7A16E /* Assets.xcassets */,
 				6E859A6D240206B800B7A16E /* LaunchScreen.storyboard */,
 				6E859A70240206B800B7A16E /* Info.plist */,
-				6E859A68240206AE00B7A16E /* twilight_timer_v0.xcdatamodeld */,
+				6E859A68240206AE00B7A16E /* twilight_timer.xcdatamodeld */,
 			);
-			path = twilight_timer_v0;
+			path = twilight_timer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6E859A5B240206AE00B7A16E /* twilight_timer_v0 */ = {
+		6E859A5B240206AE00B7A16E /* twilight_timer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E859A73240206B800B7A16E /* Build configuration list for PBXNativeTarget "twilight_timer_v0" */;
+			buildConfigurationList = 6E859A73240206B800B7A16E /* Build configuration list for PBXNativeTarget "twilight_timer" */;
 			buildPhases = (
 				6E859A58240206AE00B7A16E /* Sources */,
 				6E859A59240206AE00B7A16E /* Frameworks */,
@@ -85,9 +127,9 @@
 			);
 			dependencies = (
 			);
-			name = twilight_timer_v0;
+			name = twilight_timer;
 			productName = twilight_timer_v0;
-			productReference = 6E859A5C240206AE00B7A16E /* twilight_timer_v0.app */;
+			productReference = 6E859A5C240206AE00B7A16E /* twilight_timer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +147,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6E859A57240206AE00B7A16E /* Build configuration list for PBXProject "twilight_timer_v0" */;
+			buildConfigurationList = 6E859A57240206AE00B7A16E /* Build configuration list for PBXProject "twilight_timer" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,7 +160,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6E859A5B240206AE00B7A16E /* twilight_timer_v0 */,
+				6E859A5B240206AE00B7A16E /* twilight_timer */,
 			);
 		};
 /* End PBXProject section */
@@ -129,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E859A6F240206B800B7A16E /* LaunchScreen.storyboard in Resources */,
+				6EC96F2E2450FD5800CC3B3B /* Default-568h@2x.png in Resources */,
 				6E859A6C240206B800B7A16E /* Assets.xcassets in Resources */,
 				6E859A67240206AE00B7A16E /* Main.storyboard in Resources */,
 			);
@@ -143,8 +186,13 @@
 			files = (
 				6E859A64240206AE00B7A16E /* ViewController.swift in Sources */,
 				6E859A60240206AE00B7A16E /* AppDelegate.swift in Sources */,
+				6E740853244BE42F008846E5 /* WeatherData.swift in Sources */,
+				6EC96F2C244FE69C00CC3B3B /* NotificationManager.swift in Sources */,
 				6E859A62240206AE00B7A16E /* SceneDelegate.swift in Sources */,
-				6E859A6A240206AE00B7A16E /* twilight_timer_v0.xcdatamodeld in Sources */,
+				6E74084F244BE384008846E5 /* SunsetModel.swift in Sources */,
+				6E740855244CA6F7008846E5 /* WeatherManagerDelegate.swift in Sources */,
+				6E740849244A891A008846E5 /* WeatherManager.swift in Sources */,
+				6E859A6A240206AE00B7A16E /* twilight_timer.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,8 +343,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.justinmajetich.twilight-timer-v0";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.justinmajetich.twilight-timer";
+				PRODUCT_NAME = twilight_timer;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -313,8 +362,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.justinmajetich.twilight-timer-v0";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.justinmajetich.twilight-timer";
+				PRODUCT_NAME = twilight_timer;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -323,7 +373,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6E859A57240206AE00B7A16E /* Build configuration list for PBXProject "twilight_timer_v0" */ = {
+		6E859A57240206AE00B7A16E /* Build configuration list for PBXProject "twilight_timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6E859A71240206B800B7A16E /* Debug */,
@@ -332,7 +382,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E859A73240206B800B7A16E /* Build configuration list for PBXNativeTarget "twilight_timer_v0" */ = {
+		6E859A73240206B800B7A16E /* Build configuration list for PBXNativeTarget "twilight_timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6E859A74240206B800B7A16E /* Debug */,
@@ -344,13 +394,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		6E859A68240206AE00B7A16E /* twilight_timer_v0.xcdatamodeld */ = {
+		6E859A68240206AE00B7A16E /* twilight_timer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				6E859A69240206AE00B7A16E /* twilight_timer_v0.xcdatamodel */,
 			);
 			currentVersion = 6E859A69240206AE00B7A16E /* twilight_timer_v0.xcdatamodel */;
-			path = twilight_timer_v0.xcdatamodeld;
+			path = twilight_timer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
