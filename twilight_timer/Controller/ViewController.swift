@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        notificationManager.authorize()
+        notificationManager.authorizeNotifications()
         
         // Setup location manager and authorize
         locationManager.delegate = self
@@ -72,7 +72,7 @@ extension ViewController: WeatherManagerDelegate {
     func didUpdateSunsetTime(manager: WeatherManager, _ sunset: SunsetModel) {
         // format date with current timezone
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm:ss z"
+        dateFormatter.dateFormat = "HH:mm:ss, MM/dd/yyyy z"
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         let localTime = dateFormatter.string(from: sunset.sunsetTime)
         let locationName = sunset.placeName
