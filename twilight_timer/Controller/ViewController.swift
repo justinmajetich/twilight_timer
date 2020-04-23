@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import UserNotifications
 
 class ViewController: UIViewController {
         
@@ -17,16 +18,21 @@ class ViewController: UIViewController {
     
     var locationManager = CLLocationManager()
     var weatherManager = WeatherManager()
+    var notificationManager = NotificationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        notificationManager.authorize()
+        
+        // Setup location manager and authorize
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startMonitoringSignificantLocationChanges()
-
+        
         weatherManager.delegate = self
+        
         print("View Loaded")
     }
 

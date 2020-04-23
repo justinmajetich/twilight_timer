@@ -9,7 +9,5 @@
 import Foundation
 
 protocol WeatherManagerDelegate {
-    
     func didUpdateSunsetTime(manager: WeatherManager, _ sunset: SunsetModel)
-
 }
