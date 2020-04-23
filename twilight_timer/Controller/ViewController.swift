@@ -11,6 +11,10 @@ import CoreLocation
 
 class ViewController: UIViewController {
         
+    
+    @IBOutlet weak var sunsetTimeLabel: UILabel!
+    @IBOutlet weak var currentLocationLabel: UILabel!
+    
     var locationManager = CLLocationManager()
     var weatherManager = WeatherManager()
     
@@ -65,7 +69,13 @@ extension ViewController: WeatherManagerDelegate {
         dateFormatter.dateFormat = "MM/dd/yyyy, HH:mm:ss z"
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         let localTime = dateFormatter.string(from: sunset.sunsetTime)
+        let locationName = sunset.placeName
         
-        print("Today's sunset in \(sunset.placeName) is at \(localTime).")
+        print("Today's sunset in \(locationName) is at \(localTime).")
+        
+        DispatchQueue.main.async {
+            self.sunsetTimeLabel.text = "Today's Sunset: \(localTime)"
+            self.currentLocationLabel.text = "Location: \(locationName)"
+        }
     }
 }

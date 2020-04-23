@@ -11,8 +11,6 @@ import UserNotifications
 
 struct NotificationManager {
     
-    let notificationManager = UNUserNotificationCenter()
-    
-    
+//    let notificationManager = UNUserNotificationCenter()
     
 }

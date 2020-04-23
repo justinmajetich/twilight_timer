@@ -338,7 +338,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K48CSN86N9;
-				INFOPLIST_FILE = twilight_timer_v0/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/twilight_timer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,7 +357,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K48CSN86N9;
-				INFOPLIST_FILE = twilight_timer_v0/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/twilight_timer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
