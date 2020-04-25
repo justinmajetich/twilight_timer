@@ -15,7 +15,7 @@ struct WeatherManager {
     
     var delegate: WeatherManagerDelegate?
     
-    func getWeather(lat: CLLocationDegrees, lon: CLLocationDegrees) {
+    func getSunset(lat: CLLocationDegrees, lon: CLLocationDegrees) {
         // OpenWeatherMap API key
         let apiKey = "49da713de0a0f823e722de3e39d1ec63"
        
@@ -47,7 +47,6 @@ struct WeatherManager {
                     }
                 }
             }
-   
             // Start session task
             task.resume()
         }

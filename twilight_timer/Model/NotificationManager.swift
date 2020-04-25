@@ -14,7 +14,7 @@ struct NotificationManager {
     let center = UNUserNotificationCenter.current()
     
     
-    func authorizeNotifications() {
+    func authorize() {
         
         let authorizationOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         
@@ -33,7 +33,7 @@ struct NotificationManager {
     }
     
     
-    func createNotification(_ title: String, _ body: String, _ userInfo: [String: Any]? = nil) -> UNMutableNotificationContent {
+    func create(_ title: String, _ body: String, _ userInfo: [String: Any]? = nil) -> UNMutableNotificationContent {
         
         let content = UNMutableNotificationContent()
         
@@ -42,11 +42,10 @@ struct NotificationManager {
         content.body = body
         content.sound = .default
         
-        
         return content
     }
     
-    func scheduleNotification(for date: Date, content: UNMutableNotificationContent) {
+    func schedule(for date: Date, content: UNMutableNotificationContent) {
         
         // Extract components from Date object using current calendar
         let components = Calendar.autoupdatingCurrent.dateComponents([.year, .month, .day,
@@ -62,12 +61,14 @@ struct NotificationManager {
         center.add(request) { (error) in
             if error != nil {
                 print("Add Notification Error: \(String(describing: error))")
+            } else {
+                print("Notification Added")
             }
         }
     }
     
-    func clearNotifications() {
-        
+    func clear() {
+        center.removeAllPendingNotificationRequests()
     }
     
 }

@@ -20,10 +20,12 @@ class ViewController: UIViewController {
     var weatherManager = WeatherManager()
     var notificationManager = NotificationManager()
     
+//    var currentSunset: SusnetModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        notificationManager.authorizeNotifications()
+//      notificationManager.authorizeNotifications()
         
         // Setup location manager and authorize
         locationManager.delegate = self
@@ -33,9 +35,24 @@ class ViewController: UIViewController {
         
         weatherManager.delegate = self
         
+       
+        
         print("View Loaded")
     }
 
+    @IBAction func setTestNotificationButton(_ sender: UIButton) {
+        
+        let testNotif = notificationManager.create("Test Alert", "This is a test of the notification system.")
+               
+        notificationManager.schedule(for: Date(timeIntervalSinceNow: 10), content: testNotif)
+        
+    }
+    
+    @IBAction func setTestSunsetNotificationButton(_ sender: UIButton) {
+                
+    }
+    
+    
 }
 
 //MARK: - CLLocationManagerDelegate
@@ -44,9 +61,9 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways {
-            print("Authorized Always")
+            print("Location Services Authorized Always")
         } else {
-            print("Not Authorized")
+            print("Location Services Not Authorized")
         }
     }
     
@@ -55,7 +72,7 @@ extension ViewController: CLLocationManagerDelegate {
         if let location = locations.last {
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
-            weatherManager.getWeather(lat: lat, lon: lon)
+            weatherManager.getSunset(lat: lat, lon: lon)
         }
     }
     
@@ -70,6 +87,7 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: WeatherManagerDelegate {
     
     func didUpdateSunsetTime(manager: WeatherManager, _ sunset: SunsetModel) {
+       
         // format date with current timezone
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss, MM/dd/yyyy z"
@@ -78,6 +96,9 @@ extension ViewController: WeatherManagerDelegate {
         let locationName = sunset.placeName
         
         print("Today's sunset in \(locationName) is at \(localTime).")
+        
+//        let testNotif = notificationManager.create("Test Sunset Alert", "This is a test of the sunset notification system.")
+//        notificationManager.schedule(for: sunset.sunsetTime, content: testNotif)
         
         DispatchQueue.main.async {
             self.sunsetTimeLabel.text = "Today's Sunset: \(localTime)"
