@@ -24,9 +24,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//      notificationManager.authorizeNotifications()
-        
+                
         // Setup location manager and authorize
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -35,24 +33,15 @@ class ViewController: UIViewController {
         
         weatherManager.delegate = self
         
-       
-        
         print("View Loaded")
     }
 
     @IBAction func setTestNotificationButton(_ sender: UIButton) {
         
         let testNotif = notificationManager.create("Test Alert", "This is a test of the notification system.")
-               
         notificationManager.schedule(for: Date(timeIntervalSinceNow: 10), content: testNotif)
         
     }
-    
-    @IBAction func setTestSunsetNotificationButton(_ sender: UIButton) {
-                
-    }
-    
-    
 }
 
 //MARK: - CLLocationManagerDelegate
@@ -97,8 +86,10 @@ extension ViewController: WeatherManagerDelegate {
         
         print("Today's sunset in \(locationName) is at \(localTime).")
         
-//        let testNotif = notificationManager.create("Test Sunset Alert", "This is a test of the sunset notification system.")
-//        notificationManager.schedule(for: sunset.sunsetTime, content: testNotif)
+        // Clear scheduled notification and set new
+        notificationManager.clear()
+        let testNotif = notificationManager.create("Test Sunset Alert", "This is a test of the sunset notification system.")
+        notificationManager.schedule(for: sunset.sunsetTime, content: testNotif)
         
         DispatchQueue.main.async {
             self.sunsetTimeLabel.text = "Today's Sunset: \(localTime)"
