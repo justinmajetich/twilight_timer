@@ -16,15 +16,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentLocationLabel: UILabel!
     
     var notificationManager = NotificationManager()
-    
-//    var currentSunset: SusnetModel?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        print("View Loaded")
+        print("View Did Load")
     }
 
     @IBAction func setTestNotificationButton(_ sender: UIButton) {
@@ -35,4 +31,3 @@ class ViewController: UIViewController {
         
     }
 }
-
