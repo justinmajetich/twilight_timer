@@ -60,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let operation = BackgroundSunsetRefresh()
         
         
-        
         // Clean-up if task expires
         task.expirationHandler = {
             queue.cancelAllOperations()
@@ -145,7 +144,8 @@ extension AppDelegate: SunsetManagerDelegate {
 
         // Clear scheduled notification and set new
         notificationManager.clear()
-        let testNotif = notificationManager.create("Test Sunset Alert", "This is a test of the sunset notification system.")
+        let testNotif = notificationManager.create(title: "Test Sunset Alert",
+                                                   body: "This is a test of the sunset notification system.")
         notificationManager.schedule(for: sunset.sunsetTime, content: testNotif)
 
     }

@@ -21,7 +21,6 @@
 		6E859A6C240206B800B7A16E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E859A6B240206B800B7A16E /* Assets.xcassets */; };
 		6E859A6F240206B800B7A16E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E859A6D240206B800B7A16E /* LaunchScreen.storyboard */; };
 		6E8E42C92451426000D6F221 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8E42C82451426000D6F221 /* NotificationManager.swift */; };
-		6EC96F2E2450FD5800CC3B3B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EC96F2D2450FD5800CC3B3B /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +40,6 @@
 		6E859A6E240206B800B7A16E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E859A70240206B800B7A16E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E8E42C82451426000D6F221 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		6EC96F2D2450FD5800CC3B3B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +103,6 @@
 		6E859A53240206AE00B7A16E = {
 			isa = PBXGroup;
 			children = (
-				6EC96F2D2450FD5800CC3B3B /* Default-568h@2x.png */,
 				6E859A5E240206AE00B7A16E /* twilight_timer */,
 				6E859A5D240206AE00B7A16E /* Products */,
 			);
@@ -193,7 +190,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E859A6F240206B800B7A16E /* LaunchScreen.storyboard in Resources */,
-				6EC96F2E2450FD5800CC3B3B /* Default-568h@2x.png in Resources */,
 				6E859A6C240206B800B7A16E /* Assets.xcassets in Resources */,
 				6E859A67240206AE00B7A16E /* Main.storyboard in Resources */,
 			);

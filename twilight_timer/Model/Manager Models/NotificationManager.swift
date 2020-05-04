@@ -32,7 +32,7 @@ struct NotificationManager {
     }
     
     
-    func create(_ title: String, _ body: String, _ userInfo: [String: Any]? = nil) -> UNMutableNotificationContent {
+    func create(title: String, body: String, _ userInfo: [String: Any]? = nil) -> UNMutableNotificationContent {
         
         let content = UNMutableNotificationContent()
         
