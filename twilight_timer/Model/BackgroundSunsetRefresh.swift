@@ -11,17 +11,17 @@ import CoreLocation
 
 class BackgroundSunsetRefresh: Operation {
         
-    let sunsetManager: SunsetManager
-    let longitude: String
-    let latitude: String
-    
-    init(sunsetManager: SunsetManager) {
-        super.init()
-        self.sunsetManager = sunsetManager
-    }
-    
-    override func main() {
-        sunsetManager.fetchSunsetData(lat: latitude, lon: longitude)
-        sunsetManager.save()
-    }
+//    let sunsetManager: SunsetManager
+//    let longitude: String
+//    let latitude: String
+//
+//    init(sunsetManager: SunsetManager) {
+//        super.init()
+//        self.sunsetManager = sunsetManager
+//    }
+//
+//    override func main() {
+//        sunsetManager.fetchSunsetData(lat: latitude, lon: longitude)
+//        sunsetManager.save()
+//    }
 }

@@ -29,7 +29,8 @@ class ViewController: UIViewController {
 
     @IBAction func setTestNotificationButton(_ sender: UIButton) {
         
-        let testNotif = notificationManager.create("Test Alert", "This is a test of the notification system.")
+        let testNotif = notificationManager.create(title: "Test Alert",
+                                                   body: "This is a test of the notification system.")
         notificationManager.schedule(for: Date(timeIntervalSinceNow: 10), content: testNotif)
         
     }

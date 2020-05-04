@@ -125,7 +125,7 @@ extension AppDelegate: SunsetManagerDelegate {
     
     func didUpdateSunset(manager: SunsetManager, _ sunset: SunsetModel) {
 
-        storageManager.saveSunset(sunset)
+        storageManager.save(sunset, to: K.storedSunsetFilename)
         
         // format date with current timezone
         let dateFormatter = DateFormatter()

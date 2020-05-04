@@ -10,35 +10,36 @@ import Foundation
 
 struct StorageManager {
     
-    let sunsetDataPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("SunsetData.plist")
+    let dirPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         
-    // Save sunset model to app documents folder
-    func saveSunset(_ sunset: SunsetModel) {
+    // Save Encodable-compliant instance to documents folder
+    func save<encodableType: Encodable>(_ instance: encodableType, to filename: String) {
         
-        print(sunsetDataPath!)
+        let path = dirPath?.appendingPathComponent(filename)
+        print(path!)
         
         let encoder = PropertyListEncoder()
         do {
-            let sunsetData = try encoder.encode(sunset)
-            try sunsetData.write(to: sunsetDataPath!)
-            
+            let data = try encoder.encode(instance)
+            try data.write(to: path!)
         } catch {
-            print("saveSunset: save failed: \(error)")
+            print("save: failed to save \(filename): \(error)")
         }
         
     }
     
-    // Load sunset model to app documets folder
-    func loadSunset() -> SunsetModel? {
+    // Load Decodable-compliant instance from documets folder
+    func load<decodableType: Decodable>(from filename: String) -> decodableType? {
+        
+        let path = dirPath?.appendingPathComponent(filename)
         
         do {
-            let data = try Data(contentsOf: sunsetDataPath!)
+            let data = try Data(contentsOf: path!)
             let decoder = PropertyListDecoder()
-            let sunset = try decoder.decode(SunsetModel.self, from: data)
-            return sunset
-            
+            let instance = try decoder.decode(decodableType.self, from: data)
+            return instance
         } catch {
-            print("loadSunset: load failed: \(error)")
+            print("load: failed to load \(filename): \(error)")
             return nil
         }
         
