@@ -60,8 +60,6 @@ struct SunsetManager {
                            longitude: data.coord.lon,
                            updatedAt: Date(),
                            placeName: data.name)
-        
-        
     }
     
     func parseJSON(data: Data) -> SunsetData? {

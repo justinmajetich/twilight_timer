@@ -15,6 +15,8 @@ struct StorageManager {
     // Save sunset model to app documents folder
     func saveSunset(_ sunset: SunsetModel) {
         
+        print(sunsetDataPath!)
+        
         let encoder = PropertyListEncoder()
         do {
             let sunsetData = try encoder.encode(sunset)

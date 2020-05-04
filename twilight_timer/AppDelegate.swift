@@ -21,7 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        updateSunset()
+        sunsetManager.delegate = self
+        
+        // Start location services
+        setupLocationManager()
+        // Successfully updated location will trigger weather fetch
+        locationManager.requestLocation()
         
         // Register background weather fetch
         BGTaskScheduler.shared.register(forTaskWithIdentifier: K.bgWeatherRefreshID, using: nil) { task in
@@ -56,9 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           
         let queue = OperationQueue()
         
-        
         let operation = BackgroundSunsetRefresh()
-        
         
         // Clean-up if task expires
         task.expirationHandler = {
@@ -119,15 +122,6 @@ extension AppDelegate: CLLocationManagerDelegate {
 //MARK: - SunsetManagerDelegate
 
 extension AppDelegate: SunsetManagerDelegate {
-
-    func updateSunset() {
-        sunsetManager.delegate = self
-        
-        // Start location services
-        setupLocationManager()
-        locationManager.requestLocation()
-        
-    }
     
     func didUpdateSunset(manager: SunsetManager, _ sunset: SunsetModel) {
 
