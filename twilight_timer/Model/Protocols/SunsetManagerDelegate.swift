@@ -10,4 +10,5 @@ import Foundation
 
 protocol SunsetManagerDelegate {
     func didUpdateSunset(manager: SunsetManager, _ sunset: SunsetModel)
+    func didFailUpdateWithError(error: Error)
 }

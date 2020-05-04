@@ -143,4 +143,9 @@ extension AppDelegate: SunsetManagerDelegate {
         notificationManager.schedule(for: sunset.sunsetTime, content: testNotif)
 
     }
+    
+    func didFailUpdateWithError(error: Error) {
+        print("Sunset Update Failed: \(error)")
+    }
+    
 }
