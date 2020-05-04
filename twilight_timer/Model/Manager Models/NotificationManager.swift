@@ -13,9 +13,8 @@ struct NotificationManager {
     
     let center = UNUserNotificationCenter.current()
     
-    
     func authorize() {
-        
+                
         let authorizationOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         
         center.requestAuthorization(options: authorizationOptions) { (authorized, error) in
@@ -44,6 +43,7 @@ struct NotificationManager {
         
         return content
     }
+    
     
     func schedule(for date: Date, content: UNMutableNotificationContent) {
         

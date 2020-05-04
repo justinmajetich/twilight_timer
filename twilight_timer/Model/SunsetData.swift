@@ -1,5 +1,5 @@
 //
-//  WeatherData.swift
+//  SunsetData.swift
 //  twilight_timer
 //
 //  Created by Asiya on 4/18/20.
@@ -8,9 +8,15 @@
 
 import Foundation
 
-struct WeatherData: Codable {
+struct SunsetData: Codable {
+    let coord: Coord
     let sys: Sys
     let name: String
+}
+
+struct Coord: Codable {
+    let lon: Double
+    let lat: Double
 }
 
 struct Sys: Codable {

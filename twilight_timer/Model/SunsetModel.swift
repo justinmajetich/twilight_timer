@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct SunsetModel {
+struct SunsetModel: Codable {
     
-    let sunsetTime: Date
-    let sunriseTime: Date
-    let placeName: String
+    var sunsetTime: Date
+    var latitude: Double
+    var longitude: Double
+    var updatedAt: Date
+    var placeName: String?
+
 }
+
+    

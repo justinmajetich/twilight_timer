@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E740849244A891A008846E5 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E740848244A891A008846E5 /* WeatherManager.swift */; };
+		6E0E719D245F3CB300E26CA3 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E719C245F3CB300E26CA3 /* StorageManager.swift */; };
+		6E5E093E245CA152005DF6C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E093D245CA152005DF6C0 /* Constants.swift */; };
+		6E5E0940245D2AE9005DF6C0 /* BackgroundSunsetRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E093F245D2AE9005DF6C0 /* BackgroundSunsetRefresh.swift */; };
+		6E740849244A891A008846E5 /* SunsetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E740848244A891A008846E5 /* SunsetManager.swift */; };
 		6E74084F244BE384008846E5 /* SunsetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E74084E244BE384008846E5 /* SunsetModel.swift */; };
-		6E740853244BE42F008846E5 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E740852244BE42F008846E5 /* WeatherData.swift */; };
-		6E740855244CA6F7008846E5 /* WeatherManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E740854244CA6F7008846E5 /* WeatherManagerDelegate.swift */; };
+		6E740853244BE42F008846E5 /* SunsetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E740852244BE42F008846E5 /* SunsetData.swift */; };
+		6E740855244CA6F7008846E5 /* SunsetManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E740854244CA6F7008846E5 /* SunsetManagerDelegate.swift */; };
 		6E859A60240206AE00B7A16E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E859A5F240206AE00B7A16E /* AppDelegate.swift */; };
 		6E859A62240206AE00B7A16E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E859A61240206AE00B7A16E /* SceneDelegate.swift */; };
 		6E859A64240206AE00B7A16E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E859A63240206AE00B7A16E /* ViewController.swift */; };
 		6E859A67240206AE00B7A16E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E859A65240206AE00B7A16E /* Main.storyboard */; };
-		6E859A6A240206AE00B7A16E /* twilight_timer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E859A68240206AE00B7A16E /* twilight_timer.xcdatamodeld */; };
 		6E859A6C240206B800B7A16E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E859A6B240206B800B7A16E /* Assets.xcassets */; };
 		6E859A6F240206B800B7A16E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E859A6D240206B800B7A16E /* LaunchScreen.storyboard */; };
 		6E8E42C92451426000D6F221 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8E42C82451426000D6F221 /* NotificationManager.swift */; };
@@ -23,16 +25,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6E740848244A891A008846E5 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		6E0E719C245F3CB300E26CA3 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		6E5E093D245CA152005DF6C0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6E5E093F245D2AE9005DF6C0 /* BackgroundSunsetRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSunsetRefresh.swift; sourceTree = "<group>"; };
+		6E740848244A891A008846E5 /* SunsetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetManager.swift; sourceTree = "<group>"; };
 		6E74084E244BE384008846E5 /* SunsetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetModel.swift; sourceTree = "<group>"; };
-		6E740852244BE42F008846E5 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
-		6E740854244CA6F7008846E5 /* WeatherManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManagerDelegate.swift; sourceTree = "<group>"; };
+		6E740852244BE42F008846E5 /* SunsetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetData.swift; sourceTree = "<group>"; };
+		6E740854244CA6F7008846E5 /* SunsetManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetManagerDelegate.swift; sourceTree = "<group>"; };
 		6E859A5C240206AE00B7A16E /* twilight_timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twilight_timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E859A5F240206AE00B7A16E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E859A61240206AE00B7A16E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6E859A63240206AE00B7A16E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6E859A66240206AE00B7A16E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6E859A69240206AE00B7A16E /* twilight_timer_v0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = twilight_timer_v0.xcdatamodel; sourceTree = "<group>"; };
 		6E859A6B240206B800B7A16E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E859A6E240206B800B7A16E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E859A70240206B800B7A16E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,14 +55,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E0E719A245F3C4B00E26CA3 /* Manager Models */ = {
+			isa = PBXGroup;
+			children = (
+				6E740848244A891A008846E5 /* SunsetManager.swift */,
+				6E8E42C82451426000D6F221 /* NotificationManager.swift */,
+				6E0E719C245F3CB300E26CA3 /* StorageManager.swift */,
+			);
+			path = "Manager Models";
+			sourceTree = "<group>";
+		};
+		6E0E719B245F3C7E00E26CA3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6E740854244CA6F7008846E5 /* SunsetManagerDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		6E7408372442981E008846E5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6E0E719A245F3C4B00E26CA3 /* Manager Models */,
 				6E74084E244BE384008846E5 /* SunsetModel.swift */,
-				6E740852244BE42F008846E5 /* WeatherData.swift */,
-				6E740854244CA6F7008846E5 /* WeatherManagerDelegate.swift */,
-				6E740848244A891A008846E5 /* WeatherManager.swift */,
-				6E8E42C82451426000D6F221 /* NotificationManager.swift */,
+				6E740852244BE42F008846E5 /* SunsetData.swift */,
+				6E0E719B245F3C7E00E26CA3 /* Protocols */,
+				6E5E093D245CA152005DF6C0 /* Constants.swift */,
+				6E5E093F245D2AE9005DF6C0 /* BackgroundSunsetRefresh.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -107,7 +130,6 @@
 				6E859A6B240206B800B7A16E /* Assets.xcassets */,
 				6E859A6D240206B800B7A16E /* LaunchScreen.storyboard */,
 				6E859A70240206B800B7A16E /* Info.plist */,
-				6E859A68240206AE00B7A16E /* twilight_timer.xcdatamodeld */,
 			);
 			path = twilight_timer;
 			sourceTree = "<group>";
@@ -186,13 +208,15 @@
 			files = (
 				6E859A64240206AE00B7A16E /* ViewController.swift in Sources */,
 				6E859A60240206AE00B7A16E /* AppDelegate.swift in Sources */,
-				6E740853244BE42F008846E5 /* WeatherData.swift in Sources */,
+				6E0E719D245F3CB300E26CA3 /* StorageManager.swift in Sources */,
+				6E740853244BE42F008846E5 /* SunsetData.swift in Sources */,
 				6E8E42C92451426000D6F221 /* NotificationManager.swift in Sources */,
+				6E5E0940245D2AE9005DF6C0 /* BackgroundSunsetRefresh.swift in Sources */,
 				6E859A62240206AE00B7A16E /* SceneDelegate.swift in Sources */,
+				6E5E093E245CA152005DF6C0 /* Constants.swift in Sources */,
 				6E74084F244BE384008846E5 /* SunsetModel.swift in Sources */,
-				6E740855244CA6F7008846E5 /* WeatherManagerDelegate.swift in Sources */,
-				6E740849244A891A008846E5 /* WeatherManager.swift in Sources */,
-				6E859A6A240206AE00B7A16E /* twilight_timer.xcdatamodeld in Sources */,
+				6E740855244CA6F7008846E5 /* SunsetManagerDelegate.swift in Sources */,
+				6E740849244A891A008846E5 /* SunsetManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,19 +416,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		6E859A68240206AE00B7A16E /* twilight_timer.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				6E859A69240206AE00B7A16E /* twilight_timer_v0.xcdatamodel */,
-			);
-			currentVersion = 6E859A69240206AE00B7A16E /* twilight_timer_v0.xcdatamodel */;
-			path = twilight_timer.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6E859A54240206AE00B7A16E /* Project object */;
 }
