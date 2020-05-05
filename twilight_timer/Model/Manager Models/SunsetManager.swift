@@ -73,6 +73,7 @@ struct SunsetManager {
             return weatherData
         } catch {
             self.delegate?.didFailUpdateWithError(error: error)
+            return nil
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SunsetViewController.swift
 //  twilight_timer
 //
 //  Created by Asiya on 2/22/20.
@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import UserNotifications
 
-class ViewController: UIViewController {
+class SunsetViewController: UIViewController {
         
     @IBOutlet weak var sunsetTimeLabel: UILabel!
     @IBOutlet weak var currentLocationLabel: UILabel!
@@ -31,3 +31,4 @@ class ViewController: UIViewController {
         
     }
 }
+

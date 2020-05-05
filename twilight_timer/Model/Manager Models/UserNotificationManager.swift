@@ -1,5 +1,5 @@
 //
-//  NotificationManager.swift
+//  UserNotificationManager.swift
 //  twilight_timer
 //
 //  Created by Asiya on 4/22/20.
@@ -9,7 +9,7 @@
 import Foundation
 import UserNotifications
 
-struct NotificationManager {
+struct UserNotificationManager {
     
     let center = UNUserNotificationCenter.current()
     

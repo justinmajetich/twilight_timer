@@ -15,9 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Initialize managers
     var locationManager = CLLocationManager()
-    var notificationManager = NotificationManager()
+    var userNotificationManager = UserNotificationManager()
     var storageManager = StorageManager()
     var sunsetManager = SunsetManager()
+
+    let sunsetViewController: ViewController? = window
     
     var currentSunset: SunsetModel?
         
@@ -43,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Authorize local notifications
-        notificationManager.authorize()
+        userNotificationManager.authorize()
         
         print("Did Finish Launching With Options")
         
@@ -137,6 +139,7 @@ extension AppDelegate: SunsetManagerDelegate {
 
         storageManager.save(sunset, to: K.storedSunsetFilename)
         
+        
         // format date with current timezone
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss, MM/dd/yyyy z"
@@ -147,10 +150,10 @@ extension AppDelegate: SunsetManagerDelegate {
         print("Today's sunset in \(String(describing: locationName)) is at \(localTime).")
 
         // Clear scheduled notification and set new
-        notificationManager.clear()
-        let testNotif = notificationManager.create(title: "Test Sunset Alert",
+        userNotificationManager.clear()
+        let testNotif = userNotificationManager.create(title: "Test Sunset Alert",
                                                    body: "This is a test of the sunset notification system.")
-        notificationManager.schedule(for: sunset.sunsetTime, content: testNotif)
+        userNotificationManager.schedule(for: sunset.sunsetTime, content: testNotif)
 
     }
     
