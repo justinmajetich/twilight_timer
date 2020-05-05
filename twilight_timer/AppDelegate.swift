@@ -18,13 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var notificationManager = NotificationManager()
     var storageManager = StorageManager()
     var sunsetManager = SunsetManager()
+    
+    var currentSunset: SunsetModel?
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        if let storedSunset: SunsetModel? = storageManager.load(from: K.storedSunsetFilename) {
+            currentSunset = storedSunset
+        } else {
+//            currentSunset = SunsetModel()
+        }
+        
         sunsetManager.delegate = self
         
         // Start location services
         setupLocationManager()
+        
         // Successfully updated location will trigger weather fetch
         locationManager.requestLocation()
         
@@ -35,6 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Authorize local notifications
         notificationManager.authorize()
+        
+        print("Did Finish Launching With Options")
         
         return true
     }
@@ -88,7 +99,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     
     func setupLocationManager() {
         locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
     }
@@ -105,9 +116,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedAlways {
-            print("Location Services Authorized Always")
-        } else if status == .authorizedWhenInUse {
+        if status == .authorizedWhenInUse {
             print("Location Services Authorized When In Use")
         } else {
             print("Location Services Not Authorized")

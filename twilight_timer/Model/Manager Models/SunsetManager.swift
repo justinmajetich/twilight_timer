@@ -35,7 +35,7 @@ struct SunsetManager {
             // Define session task with completetion handler
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
-                    print(error!)
+                    self.delegate?.didFailUpdateWithError(error: error!)
                     return
                 } else {
                     if let safeData = data {
@@ -72,8 +72,7 @@ struct SunsetManager {
             let weatherData = try decoder.decode(SunsetData.self, from: data)
             return weatherData
         } catch {
-            print("Error: parseJSON: \(error)")
-            return nil
+            self.delegate?.didFailUpdateWithError(error: error)
         }
     }
 }

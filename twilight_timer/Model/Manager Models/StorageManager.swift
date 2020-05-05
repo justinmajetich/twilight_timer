@@ -22,6 +22,7 @@ struct StorageManager {
         do {
             let data = try encoder.encode(instance)
             try data.write(to: path!)
+            print("Saved file to \(filename)")
         } catch {
             print("save: failed to save \(filename): \(error)")
         }
@@ -37,6 +38,7 @@ struct StorageManager {
             let data = try Data(contentsOf: path!)
             let decoder = PropertyListDecoder()
             let instance = try decoder.decode(decodableType.self, from: data)
+            print("Loaded file from \(filename)")
             return instance
         } catch {
             print("load: failed to load \(filename): \(error)")
