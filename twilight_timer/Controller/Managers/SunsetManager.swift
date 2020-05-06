@@ -10,11 +10,11 @@ import UIKit
 import Foundation
 
 class SunsetManager {
-    
-    var delegate: SunsetManagerDelegate?
-    
+        
+    let locationManager = LocationManager()
     let storage = StorageManager()
     
+    var delegate: SunsetManagerDelegate?
     var currentSunset: SunsetModel?
 
     init() {
@@ -22,11 +22,23 @@ class SunsetManager {
         // currentSunset will be nil if load fails
         self.loadSunsetFromDisk()
     }
+    
+    // Method triggers location update and weather API fetch
+    // Delegate method didUpdateSunset will be called indirectly on success
+    // Delegate method didFailUpdate will be called indirectly on failure
+    func updateSunset() {
+        locationManager.requestLocationUpdate()
+        
+        if let lat = locationManager.currentLatitude,
+            let lon = locationManager.currentLongitude {
+            fetchSunsetData(lat: lat, lon: lon)
+        }
+    }
 }
 
 //MARK: - Networking
     
-extension SunsetManager {
+private extension SunsetManager {
     
     func fetchSunsetData(lat: String, lon: String) {
         
@@ -56,7 +68,7 @@ extension SunsetManager {
                     if let safeData = data {
                         // Parse JSON data package
                         if let sunsetData = self.parseJSON(data: safeData) {
-                            let sunset = self.updateSunset(from: sunsetData)
+                            let sunset = self.updateCurrentSunsetModel(with: sunsetData)
                             self.delegate?.didUpdateSunset(manager: self, sunset)
                         }
                     }
@@ -65,15 +77,6 @@ extension SunsetManager {
             // Start session task
             task.resume()
         }
-    }
-    
-    func updateSunset(from data: SunsetData) -> SunsetModel {
-
-        // Instantiate sunset model with decoded data
-        return SunsetModel(sunsetTime: data.sys.sunset,
-                           latitude: data.coord.lat,
-                           longitude: data.coord.lon,
-                           placeName: data.name)
     }
     
     func parseJSON(data: Data) -> SunsetData? {
@@ -90,6 +93,17 @@ extension SunsetManager {
             return nil
         }
     }
+    
+    func updateCurrentSunsetModel(with data: SunsetData) -> SunsetModel {
+
+        // Instantiate sunset model with decoded data
+        return SunsetModel(sunsetTime: data.sys.sunset,
+                           latitude: data.coord.lat,
+                           longitude: data.coord.lon,
+                           placeName: data.name)
+    }
+    
+    
 }
 
 //MARK: - Persistence
