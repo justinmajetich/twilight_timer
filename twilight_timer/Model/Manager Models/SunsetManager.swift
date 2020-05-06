@@ -18,10 +18,10 @@ class SunsetManager {
 
     init() {
         // Load most recent sunset, instantiate new if nothing loads
-        if let loadedSunset = self.loadFromDisk() {
+        if let loadedSunset: SunsetModel = loadFromDisk() {
             sunset = loadedSunset
         } else {
-            sunset = SusnetModel()
+            sunset = SunsetModel()
         }
     }
     
@@ -71,7 +71,6 @@ class SunsetManager {
         return SunsetModel(sunsetTime: data.sys.sunset,
                            latitude: data.coord.lat,
                            longitude: data.coord.lon,
-                           updatedAt: Date(),
                            placeName: data.name)
     }
     

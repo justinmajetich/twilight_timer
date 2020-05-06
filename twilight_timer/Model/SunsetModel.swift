@@ -8,14 +8,24 @@
 
 import Foundation
 
-struct SunsetModel: Codable {
+class SunsetModel: Codable {
     
     var sunsetTime: Date
     var latitude: Double
     var longitude: Double
     var updatedAt: Date
-    var placeName: String?
+    var placeName: String
 
+    init(sunsetTime: Date, latitude: Double,
+         longitude: Double, placeName: String? = "Unknown") {
+        
+        self.sunsetTime = sunsetTime
+        self.latitude = latitude
+        self.longitude = longitude
+        self.placeName = placeName!
+        self.updatedAt = Date()
+    }
+    
 }
 
     
