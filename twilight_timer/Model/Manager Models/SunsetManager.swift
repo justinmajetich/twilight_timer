@@ -17,12 +17,8 @@ class SunsetManager {
     var sunset: SunsetModel?
 
     init() {
-        // Load most recent sunset, instantiate new if nothing loads
-        if let loadedSunset: SunsetModel = loadFromDisk() {
-            sunset = loadedSunset
-        } else {
-            sunset = SunsetModel()
-        }
+        // Initialize sunset from last stored model
+        self.loadSunsetFromDisk()
     }
     
     
@@ -89,11 +85,11 @@ class SunsetManager {
         }
     }
 
-    func loadFromDisk() {
+    func loadSunsetFromDisk() {
         sunset = storage.load(from: K.sunsetStorageFilename)
     }
     
-    func saveToDisk() {
+    func saveSunsetToDisk() {
         storage.save(sunset, to: K.sunsetStorageFilename)
     }
 

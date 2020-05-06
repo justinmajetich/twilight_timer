@@ -18,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var userNotificationManager = UserNotificationManager()
     var storageManager = StorageManager()
     var sunsetManager = SunsetManager()
-
-    let sunsetViewController: ViewController? = window
     
     var currentSunset: SunsetModel?
         
