@@ -17,14 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var locationManager = CLLocationManager()
     var userNotificationManager = UserNotificationManager()
     var storageManager = StorageManager()
-    var sunsetManager = SunsetManager()
-    
-    var currentSunset: SunsetModel?
-        
+            
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        sunsetManager.delegate = self
-        
+                
         // Start location services
         setupLocationManager()
         
@@ -119,38 +114,6 @@ extension AppDelegate: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location Error: \(error)")
-    }
-    
-}
-
-//MARK: - SunsetManagerDelegate
-
-extension AppDelegate: SunsetManagerDelegate {
-    
-    func didUpdateSunset(manager: SunsetManager, _ sunset: SunsetModel) {
-
-        storageManager.save(sunset, to: K.sunsetStorageFilename)
-        
-        
-        // format date with current timezone
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss, MM/dd/yyyy z"
-        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
-        let localTime = dateFormatter.string(from: sunset.sunsetTime)
-        let locationName = sunset.placeName
-
-        print("Today's sunset in \(String(describing: locationName)) is at \(localTime).")
-
-        // Clear scheduled notification and set new
-        userNotificationManager.clear()
-        let testNotif = userNotificationManager.create(title: "Test Sunset Alert",
-                                                   body: "This is a test of the sunset notification system.")
-        userNotificationManager.schedule(for: sunset.sunsetTime, content: testNotif)
-
-    }
-    
-    func didFailUpdateWithError(error: Error) {
-        print("Sunset Update Failed: \(error)")
     }
     
 }

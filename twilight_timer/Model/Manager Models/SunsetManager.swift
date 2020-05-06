@@ -14,13 +14,18 @@ class SunsetManager {
     var delegate: SunsetManagerDelegate?
     let storage = StorageManager()
     
-    var sunset: SunsetModel?
+    var currentSunset: SunsetModel?
 
     init() {
-        // Initialize sunset from last stored model
+        // Initialize currentSunset from last stored model.
+        // currentSunset will be nil if load fails
         self.loadSunsetFromDisk()
     }
+}
+
+//MARK: - Networking
     
+extension SunsetManager {
     
     func fetchSunsetData(lat: String, lon: String) {
         
@@ -84,13 +89,19 @@ class SunsetManager {
             return nil
         }
     }
+}
+
+//MARK: - Persistence
+
+extension SunsetManager {
 
     func loadSunsetFromDisk() {
-        sunset = storage.load(from: K.sunsetStorageFilename)
+        // load() will return lastest sunset model, or nil on failure
+        currentSunset = storage.load(from: K.sunsetStorageFilename)
     }
     
     func saveSunsetToDisk() {
-        storage.save(sunset, to: K.sunsetStorageFilename)
+        storage.save(currentSunset, to: K.sunsetStorageFilename)
     }
 
 }

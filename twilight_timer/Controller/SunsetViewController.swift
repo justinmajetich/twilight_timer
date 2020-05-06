@@ -11,27 +11,55 @@ import CoreLocation
 import UserNotifications
 
 class SunsetViewController: UIViewController {
-        
+    
+    // Storyboard Elements
     @IBOutlet weak var sunsetTimeLabel: UILabel!
     @IBOutlet weak var currentLocationLabel: UILabel!
     
-    var notificationManager = UserNotificationManager()
+    // Managers
+    var userNotificationManager = UserNotificationManager()
+    var sunsetManager = SunsetManager()
+
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         print("View Did Load")
     }
 
     @IBAction func setTestNotificationButton(_ sender: UIButton) {
         
-        let testNotif = notificationManager.create(title: "Test Alert",
+        let testNotif = userNotificationManager.create(title: "Test Alert",
                                                    body: "This is a test of the notification system.")
-        notificationManager.schedule(for: Date(timeIntervalSinceNow: 10), content: testNotif)
+        userNotificationManager.schedule(for: Date(timeIntervalSinceNow: 10), content: testNotif)
         
     }
 }
 
-//MARK: - SunsetDelegate
+//MARK: - SunsetManagerDelegate
 
-extension SunsetViewController: SunsetDelegate
+extension SunsetViewController: SunsetManagerDelegate {
+    
+        func didUpdateSunset(manager: SunsetManager, _ sunset: SunsetModel) {
+        
+        // format date with current timezone
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss, MM/dd/yyyy z"
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+        
+        sunsetTimeLabel.text = dateFormatter.string(from: sunset.sunsetTime)
+        currentLocationLabel.text = sunset.placeName
+
+        // Clear scheduled notification and set new
+        userNotificationManager.clear()
+        let testNotif = userNotificationManager.create(title: "Test Sunset Alert",
+                                                   body: "This is a test of the sunset notification system.")
+        userNotificationManager.schedule(for: sunset.sunsetTime, content: testNotif)
+    }
+    
+    func didFailUpdateWithError(error: Error) {
+        print("Sunset Update Failed: \(error)")
+    }
+    
+}
