@@ -15,7 +15,7 @@ class SunsetViewController: UIViewController {
     @IBOutlet weak var sunsetTimeLabel: UILabel!
     @IBOutlet weak var currentLocationLabel: UILabel!
     
-    var notificationManager = NotificationManager()
+    var notificationManager = UserNotificationManager()
         
     override func viewDidLoad() {
         super.viewDidLoad()

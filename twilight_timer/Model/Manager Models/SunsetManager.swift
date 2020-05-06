@@ -17,6 +17,12 @@ class SunsetManager {
     var sunset: SunsetModel?
 
     init() {
+        // Load most recent sunset, instantiate new if nothing loads
+        if let loadedSunset = self.loadFromDisk() {
+            sunset = loadedSunset
+        } else {
+            sunset = SusnetModel()
+        }
     }
     
     
@@ -47,9 +53,9 @@ class SunsetManager {
                 } else {
                     if let safeData = data {
                         // Parse JSON data package
-//                        if let sunsetData = self.parseJSON(data: safeData) {
-//                            let sunset = self.updateSunset(from: sunsetData)
-//                            self.delegate?.didUpdateSunset(manager: self, sunset)
+                        if let sunsetData = self.parseJSON(data: safeData) {
+                            let sunset = self.updateSunset(from: sunsetData)
+                            self.delegate?.didUpdateSunset(manager: self, sunset)
                         }
                     }
                 }
@@ -82,6 +88,14 @@ class SunsetManager {
             self.delegate?.didFailUpdateWithError(error: error)
             return nil
         }
+    }
+
+    func loadFromDisk() {
+        sunset = storage.load(from: K.sunsetStorageFilename)
+    }
+    
+    func saveToDisk() {
+        storage.save(sunset, to: K.sunsetStorageFilename)
     }
 
 }

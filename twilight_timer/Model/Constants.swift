@@ -15,5 +15,5 @@ struct K {
     static let openWeatherAPIKey = "49da713de0a0f823e722de3e39d1ec63"
     static let openWeatherAPIURL = "https://api.openweathermap.org/data/2.5/weather"
     
-    static let storedSunsetFilename = "SunsetData.plist"
+    static let sunsetStorageFilename = "SunsetData.plist"
 }

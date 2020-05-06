@@ -24,12 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var currentSunset: SunsetModel?
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        if let storedSunset: SunsetModel? = storageManager.load(from: K.storedSunsetFilename) {
-            currentSunset = storedSunset
-        } else {
-//            currentSunset = SunsetModel()
-        }
         
         sunsetManager.delegate = self
         
