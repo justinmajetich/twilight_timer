@@ -9,7 +9,7 @@
 import Foundation
 
 class SunsetModel: Codable {
-    
+        
     var sunsetTime: Date
     var latitude: Double
     var longitude: Double

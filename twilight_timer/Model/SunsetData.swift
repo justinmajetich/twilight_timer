@@ -21,5 +21,4 @@ struct Coord: Codable {
 
 struct Sys: Codable {
     let sunset: Date
-    let sunrise: Date
 }

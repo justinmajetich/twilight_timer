@@ -32,3 +32,6 @@ class SunsetViewController: UIViewController {
     }
 }
 
+//MARK: - SunsetDelegate
+
+extension SunsetViewController: SunsetDelegate
