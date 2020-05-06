@@ -12,6 +12,7 @@ import CoreLocation
 class LocationManager: NSObject {
     
     let cllManager = CLLocationManager()
+    lazy var storage = StorageManager()
     
     var currentLatitude: String?
     var currentLongitude: String?
@@ -32,6 +33,26 @@ class LocationManager: NSObject {
         cllManager.requestLocation()
     }
     
+    // Load last recorded coordinates from disk
+    private func loadLastCoordinatesFromDisk() {
+        if let lastLocationData: LocationData = storage.load(from: K.locationStorageFilename) {
+            currentLatitude = lastLocationData.latitude
+            currentLongitude = lastLocationData.longitude
+        }
+    }
+    
+    // Save most recent coordinates to disk
+    private func saveCurrentCoordinatesToDisk() {
+        // If location data is currently maintained, save to disk
+        if let safeLatitude = currentLatitude,
+            let safeLongitude = currentLongitude {
+            storage.save(LocationData(latitude: safeLatitude,
+                                      longitude: safeLongitude),
+                         to: K.locationStorageFilename)
+        } else {
+            print("No location data to save to disk")
+        }
+    }
 }
 
 
