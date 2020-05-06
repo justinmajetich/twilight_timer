@@ -9,9 +9,16 @@
 import UIKit
 import Foundation
 
-struct SunsetManager {
+class SunsetManager {
     
-    var delegate: SunsetManagerDelegate?    
+    var delegate: SunsetManagerDelegate?
+    let storage = StorageManager()
+    
+    var sunset: SunsetModel?
+
+    init() {
+    }
+    
     
     func fetchSunsetData(lat: String, lon: String) {
         
@@ -40,9 +47,9 @@ struct SunsetManager {
                 } else {
                     if let safeData = data {
                         // Parse JSON data package
-                        if let sunsetData = self.parseJSON(data: safeData) {
-                            let sunset = self.updateSunset(from: sunsetData)
-                            self.delegate?.didUpdateSunset(manager: self, sunset)
+//                        if let sunsetData = self.parseJSON(data: safeData) {
+//                            let sunset = self.updateSunset(from: sunsetData)
+//                            self.delegate?.didUpdateSunset(manager: self, sunset)
                         }
                     }
                 }
@@ -76,4 +83,5 @@ struct SunsetManager {
             return nil
         }
     }
+
 }
