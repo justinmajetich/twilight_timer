@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E0871AB246359B00015DF54 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0871AA246359B00015DF54 /* LocationManager.swift */; };
 		6E0E719D245F3CB300E26CA3 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E719C245F3CB300E26CA3 /* StorageManager.swift */; };
 		6E5E093E245CA152005DF6C0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E093D245CA152005DF6C0 /* Constants.swift */; };
 		6E5E0940245D2AE9005DF6C0 /* BackgroundSunsetRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E093F245D2AE9005DF6C0 /* BackgroundSunsetRefresh.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E0871AA246359B00015DF54 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		6E0E719C245F3CB300E26CA3 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		6E5E093D245CA152005DF6C0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6E5E093F245D2AE9005DF6C0 /* BackgroundSunsetRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSunsetRefresh.swift; sourceTree = "<group>"; };
@@ -53,14 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E0E719A245F3C4B00E26CA3 /* Manager Models */ = {
+		6E0E719A245F3C4B00E26CA3 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				6E740848244A891A008846E5 /* SunsetManager.swift */,
 				6E8E42C82451426000D6F221 /* UserNotificationManager.swift */,
 				6E0E719C245F3CB300E26CA3 /* StorageManager.swift */,
+				6E0871AA246359B00015DF54 /* LocationManager.swift */,
 			);
-			path = "Manager Models";
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		6E0E719B245F3C7E00E26CA3 /* Protocols */ = {
@@ -74,7 +77,6 @@
 		6E7408372442981E008846E5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6E0E719A245F3C4B00E26CA3 /* Manager Models */,
 				6E74084E244BE384008846E5 /* SunsetModel.swift */,
 				6E740852244BE42F008846E5 /* SunsetData.swift */,
 				6E0E719B245F3C7E00E26CA3 /* Protocols */,
@@ -95,6 +97,7 @@
 		6E74083B2442984B008846E5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6E0E719A245F3C4B00E26CA3 /* Managers */,
 				6E859A63240206AE00B7A16E /* SunsetViewController.swift */,
 			);
 			path = Controller;
@@ -122,8 +125,8 @@
 				6E859A5F240206AE00B7A16E /* AppDelegate.swift */,
 				6E859A61240206AE00B7A16E /* SceneDelegate.swift */,
 				6E7408372442981E008846E5 /* Model */,
-				6E74083B2442984B008846E5 /* Controller */,
 				6E74083A24429842008846E5 /* View */,
+				6E74083B2442984B008846E5 /* Controller */,
 				6E859A6B240206B800B7A16E /* Assets.xcassets */,
 				6E859A6D240206B800B7A16E /* LaunchScreen.storyboard */,
 				6E859A70240206B800B7A16E /* Info.plist */,
@@ -210,6 +213,7 @@
 				6E5E0940245D2AE9005DF6C0 /* BackgroundSunsetRefresh.swift in Sources */,
 				6E859A62240206AE00B7A16E /* SceneDelegate.swift in Sources */,
 				6E5E093E245CA152005DF6C0 /* Constants.swift in Sources */,
+				6E0871AB246359B00015DF54 /* LocationManager.swift in Sources */,
 				6E74084F244BE384008846E5 /* SunsetModel.swift in Sources */,
 				6E740855244CA6F7008846E5 /* SunsetManagerDelegate.swift in Sources */,
 				6E740849244A891A008846E5 /* SunsetManager.swift in Sources */,

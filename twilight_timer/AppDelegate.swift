@@ -7,25 +7,17 @@
 //
 
 import UIKit
-import CoreLocation
 import BackgroundTasks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Initialize managers
-    var locationManager = CLLocationManager()
     var userNotificationManager = UserNotificationManager()
     var storageManager = StorageManager()
             
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-                
-        // Start location services
-        setupLocationManager()
-        
-        // Successfully updated location will trigger weather fetch
-        locationManager.requestLocation()
-        
+
         // Register background weather fetch
         BGTaskScheduler.shared.register(forTaskWithIdentifier: K.bgWeatherRefreshID, using: nil) { task in
             self.manageBackgroundWeatherRefresh(task as! BGAppRefreshTask)
@@ -80,40 +72,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func scheduleBackgroundRefresh() {
         
     }
-}
-
-//MARK: - CLLocationManagerDelegate
-
-extension AppDelegate: CLLocationManagerDelegate {
-    
-    func setupLocationManager() {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        print("Location Updated: \(locations)")
-        
-        if let safeLocation = locations.last{
-            let latitude = String(safeLocation.coordinate.latitude)
-            let longitude = String(safeLocation.coordinate.longitude)
-            sunsetManager.fetchSunsetData(lat: latitude, lon: longitude)
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            print("Location Services Authorized When In Use")
-        } else {
-            print("Location Services Not Authorized")
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location Error: \(error)")
-    }
-    
 }
