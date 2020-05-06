@@ -13,6 +13,10 @@ class LocationManager: NSObject {
     
     let cllManager = CLLocationManager()
     
+    var currentLatitude: String?
+    var currentLongitude: String?
+    var updatedAt: Date?
+    
     override init() {
         super.init()
 
@@ -21,8 +25,15 @@ class LocationManager: NSObject {
         cllManager.requestWhenInUseAuthorization()
         cllManager.allowsBackgroundLocationUpdates = true
         cllManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        cllManager.requestLocation()
     }
+    
+    func requestLocationUpdate() {
+        cllManager.requestLocation()
+    }
+    
 }
+
 
 //MARK: - CLLocationManagerDelegate Methods
 
@@ -31,13 +42,13 @@ extension LocationManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        print("Location Updated: \(locations)")
-        
         if let safeLocation = locations.last{
-            let latitude = String(safeLocation.coordinate.latitude)
-            let longitude = String(safeLocation.coordinate.longitude)
-//            sunsetManager.fetchSunsetData(lat: latitude, lon: longitude)
+            currentLatitude = String(safeLocation.coordinate.latitude)
+            currentLongitude = String(safeLocation.coordinate.longitude)
+            updatedAt = safeLocation.timestamp
         }
+        print("Location Updated: \(locations)")
+
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

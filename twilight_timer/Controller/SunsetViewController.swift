@@ -24,6 +24,7 @@ class SunsetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sunsetManager.delegate = self
         
         print("View Did Load")
     }
@@ -41,7 +42,7 @@ class SunsetViewController: UIViewController {
 
 extension SunsetViewController: SunsetManagerDelegate {
     
-        func didUpdateSunset(manager: SunsetManager, _ sunset: SunsetModel) {
+    func didUpdateSunset(manager: SunsetManager, _ sunset: SunsetModel) {
         
         // format date with current timezone
         let dateFormatter = DateFormatter()

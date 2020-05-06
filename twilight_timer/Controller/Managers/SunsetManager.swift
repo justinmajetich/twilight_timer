@@ -12,6 +12,7 @@ import Foundation
 class SunsetManager {
     
     var delegate: SunsetManagerDelegate?
+    
     let storage = StorageManager()
     
     var currentSunset: SunsetModel?
