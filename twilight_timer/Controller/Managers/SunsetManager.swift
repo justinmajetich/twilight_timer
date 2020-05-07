@@ -64,8 +64,8 @@ private extension SunsetManager {
                     if let safeData = data {
                         // Parse JSON data package
                         if let sunsetData = self.parseJSON(data: safeData) {
-                            let sunset = self.updateCurrentSunsetModel(with: sunsetData)
-                            self.delegate?.didUpdateSunset(manager: self, sunset)
+                            self.updateCurrentSunsetWithData(in: sunsetData)
+                            self.delegate?.didUpdateSunset(manager: self, self.currentSunset!)
                         }
                     }
                 }
@@ -90,13 +90,21 @@ private extension SunsetManager {
         }
     }
     
-    func updateCurrentSunsetModel(with data: SunsetData) -> SunsetModel {
+    func updateCurrentSunsetWithData(in data: SunsetData) {
 
-        // Instantiate sunset model with decoded data
-        return SunsetModel(sunsetTime: data.sys.sunset,
-                           latitude: data.coord.lat,
-                           longitude: data.coord.lon,
-                           placeName: data.name)
+        // If model is already present, update.
+        // Otherwise, initialize new model
+        if currentSunset != nil {
+            currentSunset?.sunsetTime = data.sys.sunset
+            currentSunset?.latitude = data.coord.lat
+            currentSunset?.longitude = data.coord.lon
+            currentSunset?.placeName = data.name
+        } else {
+            currentSunset = SunsetModel(sunsetTime: data.sys.sunset,
+                                        latitude: data.coord.lat,
+                                        longitude: data.coord.lon,
+                                        placeName: data.name)
+        }
     }
     
     
