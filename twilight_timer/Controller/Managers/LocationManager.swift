@@ -67,13 +67,20 @@ extension LocationManager: CLLocationManagerDelegate {
             currentLatitude = String(safeLocation.coordinate.latitude)
             currentLongitude = String(safeLocation.coordinate.longitude)
             updatedAt = safeLocation.timestamp
+            NotificationCenter.default.post(name: K.didUpdateLocation,
+                                            object: self,
+                                            userInfo: ["latitude": currentLatitude!,
+                                                       "longitude": currentLongitude!])
         }
+        
+        
+        
         print("Location Updated: \(locations)")
 
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
             print("Location Services Authorized When In Use")
         } else {
             print("Location Services Not Authorized")

@@ -49,8 +49,10 @@ extension SunsetViewController: SunsetManagerDelegate {
         dateFormatter.dateFormat = "HH:mm:ss, MM/dd/yyyy z"
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         
-        sunsetTimeLabel.text = dateFormatter.string(from: sunset.sunsetTime)
-        currentLocationLabel.text = sunset.placeName
+        DispatchQueue.main.async {
+            self.sunsetTimeLabel.text = dateFormatter.string(from: sunset.sunsetTime)
+            self.currentLocationLabel.text = sunset.placeName
+        }
 
         // Clear scheduled notification and set new
         userNotificationManager.clear()

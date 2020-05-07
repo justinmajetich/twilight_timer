@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import Foundation
 
 class SunsetManager {
@@ -21,13 +22,17 @@ class SunsetManager {
         // Initialize currentSunset from last stored model.
         // currentSunset will be nil if load fails
         self.loadSunsetFromDisk()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(didUpdateLocations),
+                                               name: K.didUpdateLocation, object: locationManager)
+        
     }
     
     // Method triggers location update and weather API fetch
     // Delegate method didUpdateSunset will be called indirectly on success
     // Delegate method didFailUpdate will be called indirectly on failure
     func updateSunset() {
-        locationManager.requestLocationUpdate()
+        self.locationManager.requestLocationUpdate()
         
         if let lat = locationManager.currentLatitude,
             let lon = locationManager.currentLongitude {
@@ -105,6 +110,21 @@ private extension SunsetManager {
     
     
 }
+
+//MARK: - Notification Observance
+
+extension SunsetManager {
+    
+    @objc func didUpdateLocations(_ notification: Notification) {
+        
+        if let updatedCoordinates = notification.userInfo as? [String: String] {
+            fetchSunsetData(lat: updatedCoordinates["latitude"]!,
+                            lon: updatedCoordinates["longitude"]!)
+        }
+    }
+    
+}
+
 
 //MARK: - Persistence
 
