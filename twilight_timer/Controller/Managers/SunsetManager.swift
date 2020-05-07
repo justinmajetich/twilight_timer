@@ -66,6 +66,7 @@ private extension SunsetManager {
                         if let sunsetData = self.parseJSON(data: safeData) {
                             self.updateCurrentSunsetWithData(in: sunsetData)
                             self.delegate?.didUpdateSunset(manager: self, self.currentSunset!)
+                            self.saveSunsetToDisk()
                         }
                     }
                 }
@@ -143,6 +144,7 @@ extension SunsetManager {
     func loadSunsetFromDisk() {
         // load() will return lastest sunset model, or nil on failure
         currentSunset = storage.load(from: K.sunsetStorageFilename)
+        self.delegate?.didUpdateSunset(manager: self, self.currentSunset!)
     }
     
     func saveSunsetToDisk() {

@@ -25,6 +25,7 @@ class SunsetViewController: UIViewController {
         super.viewDidLoad()
         
         sunsetManager.delegate = self
+        sunsetManager.updateSunset()
         
         print("View Did Load")
     }
