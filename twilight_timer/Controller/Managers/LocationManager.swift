@@ -26,7 +26,6 @@ class LocationManager: NSObject {
         cllManager.requestWhenInUseAuthorization()
         cllManager.allowsBackgroundLocationUpdates = true
         cllManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-        cllManager.requestLocation()
     }
     
     func requestLocationUpdate() {
@@ -60,7 +59,6 @@ class LocationManager: NSObject {
 
 extension LocationManager: CLLocationManagerDelegate {
     
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let safeLocation = locations.last{
@@ -69,11 +67,7 @@ extension LocationManager: CLLocationManagerDelegate {
             updatedAt = safeLocation.timestamp
             postLocationUpdateNotification()
         }
-        
-        
-        
         print("Location Updated: \(locations)")
-
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -106,5 +100,4 @@ extension LocationManager {
                                         object: self,
                                         userInfo: updatedCoordinates)
     }
-    
 }
