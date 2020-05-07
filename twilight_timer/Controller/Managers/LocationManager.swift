@@ -67,10 +67,7 @@ extension LocationManager: CLLocationManagerDelegate {
             currentLatitude = String(safeLocation.coordinate.latitude)
             currentLongitude = String(safeLocation.coordinate.longitude)
             updatedAt = safeLocation.timestamp
-            NotificationCenter.default.post(name: K.didUpdateLocation,
-                                            object: self,
-                                            userInfo: ["latitude": currentLatitude!,
-                                                       "longitude": currentLongitude!])
+            postLocationUpdateNotification()
         }
         
         
@@ -89,6 +86,25 @@ extension LocationManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location Error: \(error)")
+    }
+    
+}
+
+
+//MARK: - Notification
+
+extension LocationManager {
+    
+    // Post notification with new coordinate data.
+    // Only listening observer is SunsetManager
+    func postLocationUpdateNotification() {
+        
+        let updatedCoordinates = ["latitude": currentLatitude!,
+                                  "longitude": currentLongitude!]
+        
+        NotificationCenter.default.post(name: K.didUpdateLocation,
+                                        object: self,
+                                        userInfo: updatedCoordinates)
     }
     
 }
