@@ -66,6 +66,7 @@ extension LocationManager: CLLocationManagerDelegate {
             currentLongitude = String(safeLocation.coordinate.longitude)
             updatedAt = safeLocation.timestamp
             postLocationUpdateNotification()
+            saveCurrentCoordinatesToDisk()
         }
         print("Location Updated: \(locations)")
     }
@@ -90,7 +91,7 @@ extension LocationManager: CLLocationManagerDelegate {
 extension LocationManager {
     
     // Post notification with new coordinate data.
-    // Only listening observer is SunsetManager
+    // Only observer is SunsetManager
     func postLocationUpdateNotification() {
         
         let updatedCoordinates = ["latitude": currentLatitude!,

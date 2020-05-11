@@ -16,7 +16,6 @@ struct StorageManager {
     func save<encodableType: Encodable>(_ instance: encodableType, to filename: String) {
         
         let path = dirPath?.appendingPathComponent(filename)
-        print(path!)
         
         let encoder = PropertyListEncoder()
         do {

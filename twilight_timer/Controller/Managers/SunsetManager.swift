@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreLocation
 import Foundation
 
 class SunsetManager {
@@ -22,6 +21,7 @@ class SunsetManager {
         // Initialize currentSunset from last stored model.
         // currentSunset will be nil if load fails
         loadSunsetFromDisk()
+        // Initialize observer to monitor notification of location update
         addLocationUpdateObserver()
     }
     
@@ -43,17 +43,7 @@ private extension SunsetManager {
        
         if let url = URL(string: "\(apiURL)?lat=\(lat)&lon=\(lon)&appid=\(apiKey)") {
             
-            // Check app state to determine URLSession configuration
-            var sessionConfig: URLSessionConfiguration {
-                if UIApplication.shared.applicationState == .background {
-                    return URLSessionConfiguration.background(withIdentifier: K.bgURLSessionID)
-                } else {
-                    return URLSessionConfiguration.default
-                }
-            }
-            
-            // Background config allows location updates while app not running
-            let session = URLSession(configuration: sessionConfig)
+            let session = URLSession(configuration: .default)
             
             // Define session task with completetion handler
             let task = session.dataTask(with: url) { (data, response, error) in
@@ -76,12 +66,12 @@ private extension SunsetManager {
         }
     }
     
+    // Decode JSON response from the OpenWeatherMap API
     func parseJSON(data: Data) -> SunsetData? {
         
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .secondsSince1970
-        
-        // Decode JSON
+
         do {
             let weatherData = try decoder.decode(SunsetData.self, from: data)
             return weatherData
