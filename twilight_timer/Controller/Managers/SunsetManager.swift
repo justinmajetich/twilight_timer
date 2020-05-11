@@ -82,9 +82,8 @@ private extension SunsetManager {
     }
     
     func updateCurrentSunsetWithData(in data: SunsetData) {
-
-        // If model is already present, update.
-        // Otherwise, initialize new model
+        // If model is already initialized, update with fetched data.
+        // If not, initialize new model with data.
         if currentSunset != nil {
             currentSunset?.sunsetTime = data.sys.sunset
             currentSunset?.latitude = data.coord.lat
@@ -117,7 +116,7 @@ private extension SunsetManager {
     // didUpdateLocations is called and location manager
     // has successfully updated coordinates
     @objc func didUpdateLocations(_ notification: Notification) {
-        
+    
         if let updatedCoordinates = notification.userInfo as? [String: String] {
             fetchSunsetData(lat: updatedCoordinates["latitude"]!,
                             lon: updatedCoordinates["longitude"]!)
@@ -133,8 +132,10 @@ extension SunsetManager {
 
     func loadSunsetFromDisk() {
         // load() will return lastest sunset model, or nil on failure
-        currentSunset = storage.load(from: K.sunsetStorageFilename)
-        self.delegate?.didUpdateSunset(manager: self, self.currentSunset!)
+        if let loadedSunset: SunsetModel = storage.load(from: K.sunsetStorageFilename) {
+            currentSunset = loadedSunset
+            self.delegate?.didUpdateSunset(manager: self, self.currentSunset!)
+        }
     }
     
     func saveSunsetToDisk() {
