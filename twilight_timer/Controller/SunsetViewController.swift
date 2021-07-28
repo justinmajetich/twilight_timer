@@ -57,8 +57,8 @@ extension SunsetViewController: SunsetManagerDelegate {
 
         // Clear scheduled notification and set new
         userNotificationManager.clear()
-        let testNotif = userNotificationManager.create(title: "Test Sunset Alert",
-                                                   body: "This is a test of the sunset notification system.")
+        let testNotif = userNotificationManager.create(title: "Test Twilight Alert",
+                                                   body: "This is a test of the twilight notification system.")
         userNotificationManager.schedule(for: sunset.sunsetTime, content: testNotif)
     }
     
