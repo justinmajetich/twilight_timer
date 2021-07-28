@@ -9,17 +9,21 @@
 import UIKit
 import CoreLocation
 import UserNotifications
+import Lottie
 
 class SunsetViewController: UIViewController {
     
     // Storyboard Elements
     @IBOutlet weak var sunsetTimeLabel: UILabel!
     @IBOutlet weak var currentLocationLabel: UILabel!
+    @IBOutlet weak var animationWrapper: UIView!
     
     // Managers
     var userNotificationManager = UserNotificationManager()
     var sunsetManager = SunsetManager()
 
+    // Lottie AnimationView
+    private var animationView: AnimationView?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +31,14 @@ class SunsetViewController: UIViewController {
         sunsetManager.delegate = self
         sunsetManager.updateSunset()
         
-        print("View Did Load")
+        animationView = .init(name: "circle")
+        animationView!.frame = animationWrapper.frame
+        animationView!.contentMode = .scaleAspectFit
+        animationView!.loopMode = .loop
+        
+        view.addSubview(animationView!)
+        
+        animationView!.play()
     }
 
     @IBAction func setTestNotificationButton(_ sender: UIButton) {
