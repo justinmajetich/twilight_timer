@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/asiya/Desktop/Twilight Timer/twilight_timer_v0/twilight_timer.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
