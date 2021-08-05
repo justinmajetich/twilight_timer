@@ -9,72 +9,73 @@
 import UIKit
 import CoreLocation
 import UserNotifications
-import Lottie
 
 class SunsetViewController: UIViewController {
     
     // Storyboard Elements
-    @IBOutlet weak var sunsetTimeLabel: UILabel!
-    @IBOutlet weak var currentLocationLabel: UILabel!
     @IBOutlet weak var animationWrapper: UIView!
     
     // Managers
     var userNotificationManager = UserNotificationManager()
-    var sunsetManager = SunsetManager()
-
-    // Lottie AnimationView
-    private var animationView: AnimationView?
+    var sunsetManager: SunsetManager?
+    var animationManager: AnimationManager?
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sunsetManager.delegate = self
-        sunsetManager.updateSunset()
+        // Initialize sunsetManager and subscribe to sunset update events.
+        sunsetManager = SunsetManager()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didUpdateSunset),
+            name: K.didUpdateSunset,
+            object: sunsetManager
+        )
         
-        animationView = .init(name: "circle")
-        animationView!.frame = animationWrapper.frame
-        animationView!.contentMode = .scaleAspectFit
-        animationView!.loopMode = .loop
-        
-        view.addSubview(animationView!)
-        
-        animationView!.play()
+        // Initialize Animation Manager.
+        animationManager = AnimationManager(wrapper: animationWrapper)
     }
-
-    @IBAction func setTestNotificationButton(_ sender: UIButton) {
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
-        let testNotif = userNotificationManager.create(title: "Test Alert",
-                                                   body: "This is a test of the notification system.")
-        userNotificationManager.schedule(for: Date(timeIntervalSinceNow: 10), content: testNotif)
-        
+        NotificationCenter.default.removeObserver(sunsetManager!)
     }
 }
 
-//MARK: - SunsetManagerDelegate
+//MARK: - Notification Observance
 
-extension SunsetViewController: SunsetManagerDelegate {
+extension SunsetViewController {
     
-    func didUpdateSunset(manager: SunsetManager, _ sunset: SunsetModel) {
+    @objc func didUpdateSunset(_ notification: Notification) {
         
-        // format date with current timezone
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss, MM/dd/yyyy z"
-        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
-        
-        DispatchQueue.main.async {
-            self.sunsetTimeLabel.text = dateFormatter.string(from: sunset.sunsetTime)
-            self.currentLocationLabel.text = sunset.placeName
+        if let data = notification.userInfo as? [String: Date] {
+                    
+            updateUserNotifications(data["nextSunset"]!)
+            
+            //            // Format date with current timezone
+            //            let dateFormatter = DateFormatter()
+            //            dateFormatter.dateFormat = "HH:mm:ss, MM/dd/yyyy z"
+            //            dateFormatter.timeZone = TimeZone.autoupdatingCurrent
+            //
+            //            // Set label with formatted Date
+            //            DispatchQueue.main.async {
+            //                self.sunsetTimeLabel.text = dateFormatter.string(from: updatedSunset)
+            //            }
         }
-
-        // Clear scheduled notification and set new
+    }
+    
+    private func updateUserNotifications(_ sunsetTime: Date) {
+        
+        // Clear scheduled notifications and create updated notification.
         userNotificationManager.clear()
-        let testNotif = userNotificationManager.create(title: "Test Twilight Alert",
-                                                   body: "This is a test of the twilight notification system.")
-        userNotificationManager.schedule(for: sunset.sunsetTime, content: testNotif)
+        
+        let twilightNotif = userNotificationManager.create(
+            title: "Twilight Alert",
+            body: "Twilight has begun. Take a moment. Reflect."
+        )
+        
+        userNotificationManager.schedule(for: sunsetTime, content: twilightNotif)
+        
     }
-    
-    func didFailUpdateWithError(error: Error) {
-        print("Sunset Update Failed: \(error)")
-    }
-    
 }
