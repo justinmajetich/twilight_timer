@@ -9,16 +9,14 @@
 import Foundation
 
 struct SunsetData: Codable {
-    let coord: Coord
-    let sys: Sys
-    let name: String
+    
+    let daily: Array<Daily>
+    
 }
 
-struct Coord: Codable {
-    let lon: Double
-    let lat: Double
-}
-
-struct Sys: Codable {
+struct Daily: Codable {
+    
+    let dt: Date
     let sunset: Date
+    
 }
