@@ -51,12 +51,13 @@ struct UserNotificationManager {
         let components = Calendar.autoupdatingCurrent.dateComponents([.year, .month, .day,
                                                                       .hour, .minute, .second,
                                                                       .timeZone], from: date)
-        print(components)
         
         // Create trigger from DateComponents object
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        
         // Create notification request from trigger and content
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
         // Add request to notification center delivery schedule
         center.add(request) { (error) in
             if error != nil {
