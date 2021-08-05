@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // Register background weather fetch
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: K.bgWeatherRefreshID, using: nil) { task in
-            self.manageBackgroundWeatherRefresh(task as! BGAppRefreshTask)
-        }
+//        BGTaskScheduler.shared.register(forTaskWithIdentifier: K.bgWeatherRefreshID, using: nil) { task in
+//            self.manageBackgroundWeatherRefresh(task as! BGAppRefreshTask)
+//        }
         
         // Authorize local notifications
         userNotificationManager.authorize()
@@ -49,27 +49,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK: - BackgroundTasks
       
-    func manageBackgroundWeatherRefresh(_ task: BGAppRefreshTask) {
-          
-        let queue = OperationQueue()
-        
-        let operation = BackgroundSunsetRefresh()
-        
-        // Clean-up if task expires
-        task.expirationHandler = {
-            queue.cancelAllOperations()
-        }
-        
-        // Inform system that task is complete when operation completes successfully
-        operation.completionBlock = {
-            task.setTaskCompleted(success: !operation.isCancelled)
-        }
-        
-        // Start operation
-        queue.addOperation(operation)
-    }
-    
-    func scheduleBackgroundRefresh() {
-        
-    }
+//    func manageBackgroundWeatherRefresh(_ task: BGAppRefreshTask) {
+//
+//        let queue = OperationQueue()
+//
+//        let operation = BackgroundSunsetRefresh()
+//
+//        // Clean-up if task expires
+//        task.expirationHandler = {
+//            queue.cancelAllOperations()
+//        }
+//
+//        // Inform system that task is complete when operation completes successfully
+//        operation.completionBlock = {
+//            task.setTaskCompleted(success: !operation.isCancelled)
+//        }
+//
+//        // Start operation
+//        queue.addOperation(operation)
+//    }
+//
+//    func scheduleBackgroundRefresh() {
+//
+//    }
 }
